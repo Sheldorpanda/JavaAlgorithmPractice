@@ -1,51 +1,42 @@
 package algorithmPractice;
 
-public class TreeNode {
+public class TreeNode<T> {
 
 	// A tree node consists of leftmost child and right sibling
-	private TreeNode left;
-	private TreeNode right;
-	private TreeNode parent;
-	private Object key;
+	// This is similar to a red-black tree node, which has an additional
+	// attribute
+	private TreeNode<T> left;
+	private TreeNode<T> right;
+	private T key;
 
 	// Accessors and mutators
-	public TreeNode getLeft() {
+	public TreeNode<T> getLeft() {
 		return this.left;
 	}
 
-	public void setLeft(TreeNode left) {
-		this.left = left;
-		left.setParent(this);
+	public void setLeft(TreeNode<T> left) {
+		this.left = (TreeNode<T>) left;
 	}
 
-	public TreeNode getRight() {
+	public TreeNode<T> getRight() {
 		return this.right;
 	}
 
-	public void setRight(TreeNode right) {
+	public void setRight(TreeNode<T> right) {
 		this.right = right;
-		right.setParent(this);
-	}
-	
-	public TreeNode getParent() {
-		return this.parent;
-	}
-	
-	private void setParent(TreeNode parent) {
-		parent.setLeft(this);
-		this.setParent(parent);
 	}
 
-	public Object getKey() {
+	public T getKey() {
 		return key;
 	}
 
-	public void setKey(Object key) {
+	public void setKey(T key) {
 		this.key = key;
 	}
 
-	// Constructor
-	public TreeNode(Object _key) {
+	// Constructor, a tree node has a key and an attribute
+	// If attribute.equals(null), it is the root
+	public TreeNode(T _key) {
 		this.key = _key;
 	}
 
